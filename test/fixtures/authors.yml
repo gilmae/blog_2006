@@ -1,0 +1,30 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+gilmae:
+  id: 1
+  name: gilmae
+  url: 127.0.0.1
+  email: gilmae@127.0.0.1
+  created_at: <%= 1.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 1.second.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  login: gilmae
+  type: Editor
+  hashed_password: 006e640f494e705d93c5438d62e512447091340b #gilmae
+  salt: ababababab
+
+nemesisau:
+  id: 2
+  name: nemesisau
+  url: 127.0.0.1
+  email: nemesisau@127.0.0.1
+  created_at: <%= 90.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 1.second.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  type: Author
+
+V:
+  id: 3
+  name: V
+  url: 127.0.0.1
+  email: V@127.0.0.1
+  created_at: <%= 89.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 1.second.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  type: Author    

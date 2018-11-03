@@ -1,0 +1,2 @@
+module AtompubHelper
+end

@@ -1,0 +1,29 @@
+<%= content_tag(:p, content_tag(:span, @node.errors.on(:ip), :class=>'error')) if @node.errors.on(:ip)%>
+<form method="post">
+   <%= hidden_field(:node, :parent_id) %>
+   <% fields_for :token, @node.token do |token_fields|%>
+   <%= token_fields.hidden_field :token %>
+   <%= token_fields.hidden_field :nonce %>
+   <%= content_tag :input, nil, :value=>@node.token.created_at.iso8601, :type=>'hidden', :name=>'token[created_at]' %>
+   <% end %>
+   <fieldset>
+      <%=content_tag :span, @node.errors.on(:token), :class=>'hidden'%>
+      <% fields_for :author, @node.author do |author_fields| %>
+         <label for="author_url">url</label><%= author_fields.text_field :url%>
+         <%= "<span class=\"error\">#{@node.author.errors["url"]}</span>" if @node.author.errors["url"]%>
+         <label for="author_name">name</label><%= author_fields.text_field :name%>
+         <%= "<span class=\"error\">#{@node.author.errors["name"]}</span>" if @node.author.errors["name"]%>
+         <label for="author_email">email</label><%= author_fields.text_field :email%>
+         <%= "<span class=\"error\">#{@node.author.errors["email"]}</span>" if @node.author.errors["email"]%>
+      <% end %>
+      <%= "<span class=\"error\">#{@node.errors["ip"]}</span>" if @node.errors["ip"]%>
+      <label for="node_title">Title</label><%= text_field(:node, :title)%>
+      <%= "<span class=\"error\">#{@node.errors["title"]}</span>" if @node.errors["title"]%>
+      <label for="node_body">Body</label><%= text_area(:node, :body, {:class=>"followup"})%>
+      <%= "<span class=\"error\">#{@node.errors["body"]}</span>" if @node.errors["body"]%>
+   </fieldset>
+   <br clear="both"/>   
+   <input type="checkbox" name="remember_me" id="remember_me" checked="<%=(@remember_as_cookie)?"checked":""%>" />&nbsp;<label for="remember_me">Remember Me?</label>
+   <br />
+   <input type="submit" value="post" name="command"/><input type="submit" value="preview" name="command" />
+</form>

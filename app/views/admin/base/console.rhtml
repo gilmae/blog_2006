@@ -1,0 +1,41 @@
+<h3>Blogs</h3>
+<% @blogs.each do |blog|%>
+  <div>
+    <h4><%=blog.name%>&nbsp;<%= sparkline_tag daily_activity(blog), :line_color => 'black', :height=>15, :class=>'sparklines recent_activity' %></h4>
+    <ul>
+      <li><%= link_to "new node", post_url %></li>
+      <li><%= link_to "comments", :controller=>:comment%>
+    </ul>
+  </div>  
+<% end %>
+<h3>Recent Activity</h3>
+<%= sparkline_tag hourly_activity(@current_blog), :line_color => 'black', :height=>15, :class=>'sparklines recent_activity' %>
+<h3>Latest Posts</h3
+<table class="admin">
+  <tr>
+    <th>Post</th>
+    <th>Published</th>
+    <th>Author</th>
+  </tr>
+  <% @latest_posts.each do |post| %>
+    <tr class="<%=cycle("","alt")%>">
+        <td><%= link_to post.title, post.uri%></td>
+      <td><%= "#{time_ago_in_words(post.published_at)} ago" if post.published?%></td>
+      <td><%= link_to post.author.name, admin_view_author_url(:id=>post.author.id)%></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <h3>Latest Commenters</h3
+  <table class="admin">
+    <tr>
+      <th>Author</th>
+      <th>Posted At</th>
+    </tr>
+    <% @latest_commenters.each do |author| %>
+      <tr class="<%=cycle("","alt")%>">
+          <td><%= link_to author.name, admin_view_author_url(:id=>author.id)%></td>
+          <td><%= "#{time_ago_in_words(author.nodes.last.published_at)} ago"%></td>
+        </tr>
+      <% end %>
+    </table>

@@ -1,0 +1,22 @@
+<table class="admin" border="0" cellspacing="3" width="75%">
+  <tr class="head">
+    <th class="body">Title</th>
+    <th class="name">Author</th>
+    <th class="date">Date Created</th>
+    <th class="ip">IP</th>
+  </tr>
+  <% @nodes.each do |node| -%>
+    <tr class="<%=class_name=cycle("", "alt")%> <%=(node.content_status==:spam)?"spam":""%>" />
+    <td style="width:55%"><%=link_to(node.title, :action=>:show, :id=>node.id)%></td>
+    <td style="width:15%"><%=link_to(node.author.name, admin_view_author_url(:id=>node.author_id)) if node.author%></td>
+    <td style="width:15%"><%="#{time_ago_in_words(node.created_at)} ago"%></td>
+    <td style="width:15%"><%= link_to(node.ip.ip, :controller=>:ip, :action=>:show, :id=>node.ip.id) if node.ip%></td>
+  </tr>
+  <tr class="<%=class_name%>">
+    <td colspan="4" class="excerpt"><%=node.precis||excerpt(node.body, "")%></td>
+  </tr>
+  <% end -%>
+  <tfoot>
+    <td colspan="4"><%= will_paginate(@nodes)%></td>
+  </tfoot>
+</table>

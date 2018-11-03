@@ -1,0 +1,8 @@
+<ul class="nodes" id="node_list">
+   <%= render(:partial=>"preview", :object=>@node)%>
+</ul>
+<%= render :partial=>"followup", :object=>@node %>
+<p>Replying to...</p>
+<ul class="nodes" id="node_list">
+   <%= render :partial=>"node", :object=>@parent %>
+</ul>

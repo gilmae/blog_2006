@@ -1,0 +1,20 @@
+<h2>Editors</h2>
+<%= flash[:error] if flash[:error] %>
+  <%= content_tag :span, link_to("new", :action=>:new) %>
+  <table class="admin" border="0" cellspacing="3" width="100%">
+    <tr class="head">
+       <th class="name" width="20%">Name</th>
+       <th class="url" width="20%">Url</th>
+       <th class="email">Email</th>
+       <th class="node">Last Post</th>
+    </tr>
+    <% alt="alt" %>
+    <% @editors.each do |author| -%>
+    <tr class="<%=cycle("", "alt") -%>">
+       <td class="name" width="20%"><%=link_to author.name, {:action=>"show", :id=>author.id}%></td>
+       <td class="url" width="20%"><%=author.url%></td>
+       <td class="email" width="20%"><%=author.email%></td>
+       <td class="node" width="40%"><%=link_to("#{author.posts[0].blog.name} => #{author.posts[0].title}", edit_node_url(:id=>author.posts[0].id)) if author.posts.length > 0%></td>
+    </tr>
+    <% end -%>
+  </table>

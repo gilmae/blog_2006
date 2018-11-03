@@ -1,0 +1,28 @@
+xml.instruct!
+xml.feed "xmlns" => "http://www.w3.org/2005/Atom", "xml:base"=> url_for(:only_path=>false, :controller=>'blog'), "xml:lang"=>"en-au", "xmlns:thr"=>"http://purl.org/syndication/thread/1.0"  do
+  xml.title "avocadia comments"
+  xml.subtitle "where people bag me out for being as expected"
+  xml.link "href"=>url_for(:only_path=>false, :controller=>'blog', :action=>'index')
+  xml.updated @updated_at.utc.iso8601
+  xml.rights "type"=>"html" do
+     xml << "Copyright 2001-#{Time.now.strftime("%Y")} various authors"
+  end
+  nodes do
+    xml.entry do
+      xml.title node_title
+      xml.author do
+        xml.name node_author
+        xml.email node_author_email
+      end
+      xml.link "href"=>blog_base_path + node_permalink, "rel"=>"alternate"
+      xml.tag!("thr:in-reply-to", "ref"=>node_parent_tag, "type"=>"application/xhtml+xml", "href"=>blog_base_path + node_parent_permalink)
+      xml.link "rel"=>"related", "type"=>"application/xhtml+xml", "href"=>blog_base_path + node_parent_permalink
+      xml.id node_tag
+      xml.updated node_updated_at("%Y-%m-%dT%H:%M:%S%z")
+      xml.content "type"=>"html" do
+        xml.cdata! textilize(node_body)
+      end
+    end
+      child_nodes 
+  end
+end

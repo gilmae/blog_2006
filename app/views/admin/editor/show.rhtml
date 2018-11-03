@@ -1,0 +1,23 @@
+<h2><%=@editor.name %></h2>
+<p><%= link_to "(edit)", :action=>:edit, :id=>@editor.id %></p>
+<p>url: <%=link_to(@editor.url, @editor.url) if @editor.url %></p>
+<p>email: <%=link_to(@editor.email, "mailto:"+@editor.email) if @editor.email %></p>
+<h3>Nodes</h3>
+<table class="admin" border="0" cellspacing="3">
+    <tr class="head">
+       <th width="45%">Title</th>
+       <th width="15%">Date Created</th>
+       <th width="15%">Date Published</th>
+       <th width="15%">IP</th>
+     </tr>
+    <% alt="alt" %>
+<% @editor.posts(:all, :order=>"created_at desc, published_at desc").each do |node| -%>
+    <tr class="<%=alt=(alt==""?"alt":"")%>">
+       <td class="title"><%=link_to(node.title, edit_node_url(:id=>node.id))%></td>
+       <td class="date"><%="#{time_ago_in_words(node.created_at)} agos"%></td>
+       <td class="date"><%="#{time_ago_in_words(node.published_at)} ago" if node.published_at%></td>
+       <td class="ip"><%=link_to(node.ip.ip, :controller=>:ip, :action=>:show, :id=>node.ip.id) if node.ip%></td>
+     </tr>
+<% end -%>
+</table>
+<%= button_to "Delete Editor", :action=>"delete", :id=>@editor.id %>

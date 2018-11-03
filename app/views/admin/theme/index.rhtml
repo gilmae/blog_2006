@@ -1,0 +1,10 @@
+<h2>themes</h2>
+<%= flash[:error] if flash[:error] %>
+<%=link_to "Create new theme", {:action=>"new"}%>
+<ul>
+  <% @themes.each do |theme| -%>
+  <li>
+    <%=link_to theme.name, :action=>'show', :theme=>theme.name%>    
+  </li>
+  <% end -%>
+</ul>

@@ -1,0 +1,19 @@
+<h2>Authors</h2>
+<%= flash[:error] if flash[:error] %>
+<table width="100%" class="admin" cellspacing="0">
+     <tr>
+       <th class="name" width="25%">Name</th>
+       <th class="url" width="35%">Url</th>
+       <th class="email" width="35%">Email</th>
+    </tr>
+<% @authors.each do |author| -%>
+    <tr class="<%=cycle("", "alt")%>">
+       <td class="name"><%=link_to author.name, {:action=>"show", :id=>author.id}%></td>
+       <td class="url"><%=author.url%></td>
+       <td class="email"><%= link_to author.email, "mailto:#{author.email}"%></td>
+     </tr>
+<% end -%>
+  <tfoot>
+    <td colspan="4"><%= will_paginate(@authors)%></td>
+  </tfoot>
+</table>

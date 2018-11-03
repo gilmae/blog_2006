@@ -1,0 +1,26 @@
+<h2>Journal</h2>
+<ul class="nodes">
+   <% nodes :num=>10 do%>
+     <li class="node">
+       <h3><%= link_to "#", node_permalink%> <%= link_to node_title, node_permalink%></h3>	
+	   <p><%=node_body%></p>
+       <ul class="meta">
+       	  <li class="author"><%=node_author%></li>
+		  <li class="posted_at"><%=node_date_archives%></li>
+		  <li class="followups">
+		    <% if_node_allows_comment? do %>
+			  <%=link_to("followup", node_followup_link)%>
+			<% end %>
+			&nbsp;<%=link_to node_descendant_count.to_s + " followups", node_permalink + "#followups"%>
+		  </li>
+		  <li class="tags">
+            <ul class="tags">
+              <% node_tags do%>
+			  	<li><a href="/tag/<%=tag_name%>"><%=tag_name%></a></li>
+			  <% end %>	
+			</ul>
+          </li>
+		</ul>   	
+     </li>
+   <% end %>
+</ul>

@@ -1,0 +1,9 @@
+<%= @comment.body %>
+
+
+<hr />
+<a href="<%=url_for :controller=>"admin/comment", :action=>:show, :id=>@comment.id, :host=>@comment.blog.domain, :only_path=>false%>">Administration</a>
+
+[[DONOTDELETE
+<%=@comment.tag_uri%>
+]]

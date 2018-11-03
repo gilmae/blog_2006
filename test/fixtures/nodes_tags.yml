@@ -1,0 +1,7 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+nt_1:
+  node_id: 3
+  tag_id: 1
+nt_2:
+  node_id: 3
+  tag_id: 2

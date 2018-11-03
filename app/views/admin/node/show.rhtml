@@ -1,0 +1,27 @@
+<%=error_messages_for  'node'%>
+<ul class="nodes">
+   <%= render :partial=>"blog/preview", :object=>@node %>
+</ul>
+<%= link_to "Textile Reference", "http://hobix.com/textile" %>
+<form method="post" id="node_form">
+   <fieldset>
+      <label for="node_title">Title</label><%= text_field(:node, :title) %>
+      <%= "<span class=\"error\">#{@node.errors["title"]}</span>" if @node.errors["title"]%>
+      <label for="node_body">Body</label><%= text_area(:node, :body)%>
+      <%= "<span class=\"error\">#{@node.errors["body"]}</span>" if @node.errors["body"]%>
+      <label for="node_precis">Precis</label><%= text_area(:node, :precis)%>
+      <label for="tags">Tags</label>
+      <%= text_field_tag 'tag_list', @node.tags.collect{|t| t.name}.join(" ") %>
+     <label for="node_published_at">Publish At</label><%= datetime_select :node, :published_at, {:class=>'date_select'}%>
+   </fieldset>
+   <fieldset>
+     <p>Created at: <%= content_tag(:span, @node.created_at.strftime("%d-%m-%Y")) if @node.created_at%></p>
+     <p>Created by: <%= content_tag(:span, @node.author.name)%></p>
+     <p>Permalink: <%= content_tag(:span, @node.permalink)%></p>
+   </fieldset>
+   <br clear="both" />
+   <%= submit_tag("preview", :name=>"command")%>
+   <%= submit_tag "save", :name=>"command" %>
+   <%= submit_tag("delete", :name=>"command") if !@node.new_record?%>
+ </form>
+ <%= followup_permissioning @node %>

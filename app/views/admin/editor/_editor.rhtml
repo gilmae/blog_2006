@@ -1,0 +1,21 @@
+<% form_for :editor, @editor do |f|%>
+   <fieldset>
+      <%=hidden_field :editor, :type%>
+      <%=hidden_field(:editor, :id) if @editor.id%>
+      <label for="editor_name">Name</label><%= f.text_field :name%>
+      <%= content_tag("span", @editor.errors["name"], {:class=>"error"}) if @editor.errors["name"]%>
+      <label for="editor_url">URL</label><%= f.text_field :url%>
+      <%= content_tag("span", @editor.errors["url"], {:class=>"error"}) if @editor.errors["url"]%>
+      <label for="editor_email">Email</label><%= f.text_field :email%>      
+      <%= content_tag("span", @editor.errors["email"], {:class=>"error"}) if @editor.errors["email"]%>
+    </fieldset>
+    <fieldset>
+      <label for="editor_login">Login</label><%= f.text_field :login%>
+      <%= content_tag("span", @editor.errors[:login], {:class=>"error"}) if @editor.errors[:login]%>
+      <label for="editor_password">Password</label><%= f.password_field :password%>      
+      <%= content_tag("span", @editor.errors[:password], {:class=>"error"}) if @editor.errors[:password]%>
+      <label for="editor_password_confirmation">Repeat Password</label><%= f.password_field :password_confirmation %>      
+      <%= content_tag("span", @editor.errors[:password_confirmation], {:class=>"error"}) if @editor.errors[:password_confirmation]%>
+   </fieldset>
+   <input type="submit" value="submit" />
+<% end %>

@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+testcadia:
+  id: 1
+  name: testcadia
+  sub_title: just for testing
+  description: a test blog
+  created_at: <%= 1.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 1.second.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  domain: 127.0.0.1
+  theme: avocadia

@@ -1,0 +1,4 @@
+.svn*
+public/page_cache/*
+vendor/rails/*
+config/*

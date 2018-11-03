@@ -1,0 +1,206 @@
+body, html { 
+   margin:0;
+   font-size:14pt;
+   min-height:100%;
+   font:14px/19px "Palatino LinoType", Georgia, serif;
+
+}
+
+td, th { 
+   font:14px/19px "Palatino LinoType", Georgia, serif;
+}
+
+body { 
+   background: #fff url(/images/avocadia.jpg) top left no-repeat;
+}
+
+h1 {
+   padding-left:17em;
+   position:relative;
+   height:248px;
+   margin:0px; 
+   font-weight:normal; 
+   letter-spacing:2px;
+   background:transparent;
+   color:#4d5d56;
+   font-family:Helvetica, Verdana, sans-serif;
+}
+
+img#logo
+{
+   width:45em;
+   border:0px;
+   height:223px;
+   position:absolute;
+   top:0;
+   left:0;
+
+}
+
+h1 a {
+   position:absolute;
+   top:10px;
+   background:transparent;
+   color: #4d5d56;
+   text-decoration:none;
+}
+
+div#sidebar {
+   width:200px;
+   position:absolute;
+   margin-top:1em;
+   height:85%;
+   padding-left:3px;
+   left:0;
+}
+
+div#sidebar h3 { 
+   margin:0px 0px .25em 0px;
+   font-weight:normal; 
+   letter-spacing:2px;
+   background:transparent;
+   color:#4d5d56;
+   font-family:Helvetica, Verdana, sans-serif;
+   font-size:1.1em;
+}
+
+div#sidebar ul, div#sidebar div {
+   margin-top:0;
+   margin-left:0;
+   padding-left:0;
+   list-style-type:none;
+}
+
+div#sidebar div { 
+   margin-bottom:.25em;
+}
+
+div#sidebar ul li {
+   margin-bottom:.25em;
+}
+
+div#sidebar ul li a:link
+{
+   color:#64823d;
+   background:transparent;
+}
+div#sidebar ul li a:hover, div#sidebar ul li a:active
+{
+   color:#4d5d56;
+   background:transparent;
+}
+div#sidebar ul li a:visited
+{
+   color:#9ec656;
+   background:transparent;
+}
+
+div#content {
+   float:left;
+   width:500px;
+   border-left:1px dashed #9ec643; 
+   margin:0;
+   margin-left:150px;
+   float:left;
+   min-height:85%;
+   position:relative;
+   padding:10px;
+}
+
+html>*:first-child+body div#content {
+   margin-left:250px;
+}
+div#content h2
+{
+   margin:0 0 1em 0;
+   font-weight:normal; 
+   letter-spacing:2px;
+   background:transparent;
+   color:#4d5d56;
+   font-family:Helvetica, Verdana, sans-serif;
+}
+
+ul.nodes { 
+   margin:.5em 0 0 0;
+   list-style-type:none
+}
+
+ul.nodes ul.nodes { 
+   margin-left:2em;
+   margin-top:1em;
+}
+
+ul.nodes {
+   margin-left:0;
+   padding-left:0;
+   list-style-type:none;
+}
+
+li.node {
+   position:relative;
+   padding-bottom:1.5em;
+}
+
+li.node h3
+{
+   margin:0px 0px .25em 0px;
+   font-weight:normal; 
+   letter-spacing:2px;
+   background:transparent;
+   color:#4d5d56;
+   font-family:Helvetica, Verdana, sans-serif;
+   font-size:1.1em;
+}
+li.node h3 a { 
+   color:#4d5d56;
+   text-decoration:none;
+   border-bottom:1px dashed #4d5d56;
+}
+
+li.node h3 {
+/*   border:1px solid #f00;
+   border-bottom:0;
+   margin-bottom:0;*/
+}
+li.node ul.meta {
+   margin-left:0;
+   padding:.25em;
+}
+
+li.node ul.meta:before {
+   content:'-- ';
+}
+
+li.node ul.meta li:first-child {
+   margin-right:0;
+}
+
+li.node ul.meta li.author:after {
+   content:', ';
+}
+li.node ul.meta ul.tags { 
+   margin-left:0;
+   padding-left:0;
+   font-size:.85em;
+}
+
+li.node ul.meta ul.tags li { 
+   display:inline;
+   margin-right:1em;
+}
+li.node ul.meta ul.tags li:after { 
+   content:'';
+}
+
+li.node ul.meta li {
+   display:inline;
+   margin-right:1em;
+}
+
+li.node ul.meta li.followups {
+   display:block;
+}
+
+
+
+

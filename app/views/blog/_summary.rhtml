@@ -1,0 +1,10 @@
+<li class="node">
+   <h3><%=link_to "#", summary.permalink%>&nbsp;<%=link_to summary.title, summary.permalink%></h3>
+   <p><%=textilize(sanitize(summary.precis)) %></p>
+   <%= link_to("edit", edit_node_url(:id=>summary.id)) if session[:user] %>
+   <ul class="meta">
+      <li class="author"><%=link_to_author_archives summary%></li>
+      <li class="posted_at"><%= link_to_date_archives summary%></li>
+      <li class="followups"><%= link_to_followup(summary)%>&nbsp;(<%=link_to summary.descendant_count.to_s + " followups", summary.permalink%>)</li>
+   </ul>
+</li>

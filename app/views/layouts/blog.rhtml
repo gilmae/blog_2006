@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-au">
+   <head>
+      <title>avocadia</title>
+      <link rel="stylesheet" href="/stylesheets/theme/avocadia.css" />
+      <link rel="alternate" title="Atom feed" href="/journal.xml" />
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <META HTTP-EQUIV=Refresh CONTENT="1800;">
+      <link rel="Contact" title="gilmae@avocadia.net" href="mailto:gilmae@avocadia.net"/>
+      <meta name="geo.position" content="-33.9968;150.8736">
+      <meta name="geo.country" content="AU">
+   </head>
+   <body>
+      <h1><a href="/"><%=@context.blog.name%></a></h1>
+      <div id="content">
+         <%= yield%>
+      </div>
+      <a href="http://blog.avocadia.net/highminded.php"><div style="height: 0px; width: 0px;"></div></a>
+      <div id="sidebar">
+         <h3 id="blog_meta_header">Meta</h3>
+         <ul id="blog_meta">
+            <li><a href="/" title="front page">top</a></li>           
+            <li><a href="/2004/06/24/about_me" title="Contact me">contact</a></li>
+            <li><a href="/2004/06/28/behind_the_HTML" title="About the site">about</a></li>
+         </ul>
+         <form method="post" action="/blog/search">
+            <input type="text" id="search_qry" name="qry" />
+            <input type="submit" value="search" />
+         <form>
+         <h3 id="feeds_header">Feeds</h3>
+         <ul id="feeds">
+            <% @context.feeds.each do |feed| -%>
+            <%= content_tag("li", link_to(feed, {:controller=>"feed", :action=>feed})) %>
+            <% end -%>
+         </ul>
+         <h3 id="tags_header">Tags</h3>
+         <a href="http://blog.avocadia.net/highminded.php"><!-- sulfuric --></a>
+         <h3 id="links_header">Links</h3> 
+         <%= render :partial=>'blog/delicious' %>
+         powered by <a href="http://del.icio.us/avocadia">del.icio.us</a>
+         <hr />
+         <p><a href="http://www.amazon.com/gp/registry/registry.html/ref=cm_wl_reg-item/102-1212203-5862544?%5Fencoding=UTF8&id=2CCSMG67KXBIP">Amazon wishlist</a></p>
+         <img src="/images/Quenya gilmae.png" alt="gilmae rendered in Quenya." title="It says, 'I am such a fucking geek'" style="width:90%" />
+         <div id="license">
+            <!-- Creative Commons License -->
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons License</a>.
+            <!-- /Creative Commons License -->
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+         </div>
+         <a href="http://blog.avocadia.net/highminded.php"></a>
+         <a href="http://southsearepublic.org" title="SouthSeaRepublic.org, a discussion site for Australian policy and ideas"><img src="/images/ssr.jpg" alt="Logo forSouthSeaRepublic.org, depicting a stylised shape of the Australian continent" style="width:95%; border:0;" /></a>
+         <p id="random_day"><%=days_since_x%></span>
+      </div>
+   </body>
+</html>

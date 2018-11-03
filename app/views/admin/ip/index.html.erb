@@ -1,0 +1,22 @@
+<h2>Ips</h2>
+<%= flash[:error] if flash[:error] %>
+<%=link_to "Create new blog", {:action=>"new"}%>
+<table width="100%" class="admin" cellspacing="0">
+  <tr>
+    <th width="45%">IP</th>
+    <th width="10%">Nodes</th>
+    <th width="10%">Authors</th>
+    <th width="35%">Last Post</th>
+  </tr>
+  <% @ips.each do |ip| -%>
+  <tr class="<%=cycle("","alt")%>">
+    <td><span><%=link_to ip.ip, :action=>:show, :id=>ip.id%></span></td>
+    <td><span><%=ip.nodes.size%></span></td>
+    <td><span><%=ip.authors.size%></span></td>
+    <td><span><%=link_to(ip.nodes[0].title, edit_node_url(:id=>ip.nodes[0].id)) if ip.nodes.length > 0%></span></td>
+  </tr>
+  <% end -%>
+  <tfoot>
+    <td colspan="4"><%= will_paginate(@ips)%></td>
+  </tfoot>
+</table>  

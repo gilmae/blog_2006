@@ -1,0 +1,29 @@
+xml.instruct!
+xml.feed "xmlns" => "http://www.w3.org/2005/Atom", "xml:base"=> blog_base_path, "xml:lang"=>"en-au" do
+  xml.title blog_name #'avocadia'
+  xml.subtitle 'Recent Comments'
+  xml.link "href"=> blog_base_path #url_for(:only_path=>false, :controller=>'blog', :action=>'index')
+  xml.updated Time.now.utc.iso8601
+  xml.rights "type"=>"html" do
+     xml << "Copyright 2001-#{Time.now.strftime("%Y")} Strange Vanilla, some rights reserved"
+  end
+  xml.author do
+     xml.name blog_administrator
+     xml.email blog_administrator_email
+  end
+  nodes do
+      xml.entry do
+         xml.title node_title
+         xml.author do
+            xml.name node_author
+            xml.email node_author_email
+         end
+         xml.link "href"=>blog_base_path + node_permalink, "rel"=>"alternate"
+         xml.id node_tag
+         xml.updated node_updated_at("%Y-%m-%dT%H:%M:%S%z")
+         xml.content "type"=>"html" do
+            xml.cdata! node_body
+         end
+      end
+  end
+end

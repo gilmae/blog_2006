@@ -1,0 +1,103 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+draft_1:
+  id: 1
+  title: First
+  body: This is the first post
+  precis: First Post
+  created_at: <%= 1.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 1.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  author_id: 1
+  comments_closed: 0
+  type: Post
+  blog_id: 1
+  
+very_old_post:
+  id: 2
+  title: Old
+  body: This is a very old post
+  precis: Old Post
+  created_at: <%= 91.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 91.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  author_id: 1
+  published_at: <%= 91.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  permalink: <%= 91.day.ago.strftime("%Y/%m/%d/Old") %>
+  comments_closed: 0
+  type: Post
+  blog_id: 1
+  
+recent_post:
+  id: 3
+  title: Recent
+  body: This is a recent post
+  precis: Old Post
+  created_at: <%= 9.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 9.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  author_id: 1
+  published_at: <%= 9.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  permalink: <%= 9.day.ago.strftime("%Y/%m/%d/Recent") %>
+  comments_closed: 0
+  type: Post
+  blog_id: 1
+  
+closed_post:
+  id: 4
+  title: Closed
+  body: This is a Closed post
+  precis: Closed Post
+  created_at: <%= 19.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 19.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  author_id: 1
+  published_at: <%= 19.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  permalink: <%= 19.day.ago.strftime("%Y/%m/%d/Closed") %>
+  comments_closed: 1
+  type: Post
+  blog_id: 1
+  
+  #published_at:
+  #parent_id:
+  #permalink:
+
+tomorrows_post:
+  id: 5
+  title: Recent
+  body: This is a recent post
+  precis: Old Post
+  created_at: <%= 9.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 9.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  author_id: 1
+  published_at: <%= 1.day.from_now.strftime("%Y-%m-%d %H:%M:%S") %>
+  permalink: <%= 9.day.from_now.strftime("%Y/%m/%d/Recent") %>
+  comments_closed: 0
+  type: Post
+  blog_id: 1
+  
+reply_1:
+  id: 101
+  title: Reply
+  body: This is a reply to the old post
+  precis: Reply
+  created_at: <%= 75.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 75.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  author_id: 2
+  comments_closed: 0
+  published_at: <%= 75.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  parent_id: 2
+  permalink: <%= 75.day.ago.strftime("%Y/%m/%d/Reply") %>
+  type: Comment
+  blog_id: 1
+    
+reply_1_1:
+  id: 102
+  title: Reply
+  body: This is a reply to a reply
+  precis: Reply
+  created_at: <%= 9.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= 9.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  author_id: 3
+  published_at: <%= 9.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+  parent_id: 101
+  permalink: <%= 9.day.ago.strftime("%Y/%m/%d/Reply_") %>
+  comments_closed: 0
+  type: Comment
+  blog_id: 1
+  

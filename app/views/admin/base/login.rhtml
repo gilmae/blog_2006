@@ -1,0 +1,9 @@
+<form method="post">
+   <%=content_tag("span", flash[:notice], "class" => "alert") if flash[:notice] %>    
+   <fieldset>
+      <label for="user[name]">Username</label><%=text_field :user, :name%>
+      <label for="pwd">Password</label><%=content_tag("input", "", {:type=>"password", :name=>"pwd", :id=>"pwd"})%>
+   </fieldset>
+   <%=content_tag("span", flash[:login_error], "class" => "error") if flash[:login_error] %>    
+   <input type="submit" value="login" />
+</form>

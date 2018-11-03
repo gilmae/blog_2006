@@ -1,0 +1,3 @@
+<% tag_cloud (tag_cloud, TAG_CLASSES) do |tag, commonality| -%>
+<%= link_to(h("#{tag}"), "/tag/#{tag}", {:class=>commonality}) %>
+<% end -%>

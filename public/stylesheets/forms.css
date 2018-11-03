@@ -1,0 +1,51 @@
+form { width:700px;float:left;}
+fieldset { 
+   width:700px;
+   float:left;
+   padding:0;
+   border:0;
+   clear:both;
+}
+
+fieldset label { 
+   width:90px;
+   margin-bottom:.5em;
+   colur:#0f0;
+   float:left;
+   clear:left;
+}
+
+fieldset input, fieldset textarea, fieldset select{ 
+   width:580px;
+   float:left;
+   margin-left:.5em;
+   margin-bottom:.5em;
+   clear:none;
+}
+fieldset input.checkbox {
+  width:15px;
+      
+}
+
+fieldset textarea.followup { 
+   height:25em;
+}
+
+ul.commands {
+  list-style-type:none;
+  margin-left:0;
+  padding-left:0;
+}
+
+ul.commands li {
+  margin-bottom:.25em;
+  width:auto;
+  float:left;
+  margin-right:.33em;
+}
+
+ul.commands li form.button-to {
+    width:auto;
+    float:none;
+
+}

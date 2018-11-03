@@ -1,0 +1,23 @@
+<h2>Blogs</h2>
+<%= flash[:error] if flash[:error] %>
+<%=link_to "Create new blog", {:action=>"new"}%>
+<table width="100%" class="admin" cellspacing="0">
+  <tr>
+    <th width="45%">Blog</th>
+    <th width="10%">Posts</th>
+    <th width="10%">Comments</th>
+    <th width="35%">Last Post</th>
+  </tr>
+  <% @blogs.each do |blog| -%>
+  <tr class="<%=cycle("","alt")%>">
+    <td><span><%=link_to blog.name, :action=>:show, :id=>blog.id%></span></td>
+    <td><span><%=blog.posts.size%></span></td>
+    <td><span><%=blog.comments.size%></span></td>
+    <td><span><%=link_to(blog.posts[0].title, edit_node_url(:id=>blog.posts[0].id)) if blog.posts.length > 0%></span></td>
+  </tr>
+  <% end -%>
+  <tfoot>
+    <td colspan="4"><%= will_paginate(@blogs)%></td>
+  </tfoot>
+</table>  
+  

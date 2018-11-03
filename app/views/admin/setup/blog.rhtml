@@ -1,0 +1,10 @@
+<% form_for :blog, @blog do |f|%>
+  <fieldset>
+  	<label for="blog_name">Name</label><%= f.text_field :name%>
+	<label for="blog_sub_title">Sub-Title</label><%= f.text_field :sub_title%>
+	<label for="blog_domain">Domain</label><%= f.text_field :domain%>
+	<label for="blog_theme">Theme</label><%= f.select(:theme, Theme.find_all.collect {|p| [ p.name, p.name ] })%>
+	<label for="blog_description">Description</label><%= f.text_area :description%>
+  </fieldset>
+  <br clear="both"/> <input type="submit" value="submit" />
+<% end %>

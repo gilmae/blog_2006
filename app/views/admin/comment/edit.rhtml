@@ -1,0 +1,12 @@
+<form method="post">
+  <fieldset>
+    <label for="node_title">Title</label><%= text_field(:node, :title) %>
+      <%= "<span class=\"error\">#{@node.errors["title"]}</span>" if @node.errors["title"]%>
+      <label for="node_body">Body</label><%= text_area(:node, :body)%>
+      <%= "<span class=\"error\">#{@node.errors["body"]}</span>" if @node.errors["body"]%>
+      
+      <label for="node_content_status">Content Status</label><%= input :node, :content_status%>
+  </fieldset>
+  <input type="submit" value="Save" name="cmd"/>
+  <input type="submit" value="Cancel" name="cmd" />
+</form>

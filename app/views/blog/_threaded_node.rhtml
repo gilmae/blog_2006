@@ -1,0 +1,19 @@
+<% threading_notes = {} if !threading_notes%> 
+<li class="node">
+   <h3><%= link_to "#", "/" + threaded_node.permalink%>&nbsp;<%=link_to threaded_node.title, "/" + threaded_node.permalink%></h3>
+   <p><%=textilize(sanitize(threaded_node.body))%></p>
+   <%= link_to("edit", edit_node_url(:id=>threaded_node.id)) if session[:user] %>
+   <ul class="meta">
+      <li class="author"><%=link_to_author_archives threaded_node%></li>
+      <li class="posted_at"><%= link_to_date_archives threaded_node %></li>
+      <li class="followups"><%= link_to_followup threaded_node%></li>
+      <li class="subscribe"><%= link_to_thread_feed threaded_node %></li>
+      <li class="tags">
+
+      </li>
+   </ul>
+   <a name="followups" />
+   <ul class="nodes">
+      <%= render :partial=>"threaded_node", :collection=>threading_notes[threaded_node.id], :locals=>{:threading_notes=>threading_notes} if threading_notes.has_key? threaded_node.id%>
+   </ul>
+</li>

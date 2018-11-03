@@ -1,0 +1,10 @@
+<li class="node">
+   <h3><%= link_to "#", "#"%>&nbsp;<%=link_to preview.title, "#"%></h3>
+   <p><%=textilize(sanitize(preview.body)) if preview.body%></p>
+   <ul class="meta">
+      <li class="author"><%=link_to_author_archives preview%></li>
+   </ul>
+   <a name="followups" />
+   <ul class="nodes">
+   </ul>
+</li>

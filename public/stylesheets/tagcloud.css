@@ -1,0 +1,27 @@
+div#tagcloud { 
+   
+}
+
+div#tagcloud a { 
+   margin-right:.33em;
+}
+
+div#tagcloud a.rare { 
+   font-size:.6em;
+}
+
+div#tagcloud a.uncommon { 
+   font-size:.75em;
+}
+
+div#tagcloud a.common { 
+   font-size:1em;
+}
+
+div#tagcloud a.often { 
+   font-size:1.25;
+}
+
+div#tagcloud a.overused { 
+   font-size:1.45;
+}

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+tb_1:
+  thread_id: 2
+  branch_node_id: 2
+  levels_from_root: 1
+  thread_type: Node
+tb_2:
+  thread_id: 101
+  branch_node_id: 101
+  levels_from_root: 1
+  thread_type: Node
+tb_3:
+  thread_id: 2
+  branch_node_id: 101
+  thread_type: Node
+  levels_from_root: 2
+  

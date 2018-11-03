@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-au">
+  <head>
+      <title>Guacamonium</title>
+      <link rel="stylesheet" href="/stylesheets/forms.css" />
+      <link rel="stylesheet" href="/stylesheets/admin.css" />
+      <link rel="stylesheet" type="text/css" href="/stylesheets/menu.css" />
+      <script type="text/javascript" src="/javascripts/yahoo-dom-event.js"></script>
+      <script type="text/javascript" src="/javascripts/container_core-min.js"></script>
+
+      <script type="text/javascript" src="/javascripts/menu-min.js"></script>
+      <script type="text/javascript">
+        YAHOO.util.Event.onContentReady("menu", function () {
+          var oMenuBar = new YAHOO.widget.MenuBar("menu", { 
+            autosubmenudisplay: true, 
+            hidedelay: 750, 
+            lazyload: true });
+          oMenuBar.render();
+        });
+      </script>
+    </head>
+    <body>
+      <div id="context">
+        <h1><img id="logo" alt="" src="/images/aod.jpg" />guacamonium</h1>
+     </div>
+      <% if @logged_in -%>
+      <div id="menu" class="yuimenu">
+        <div class="bd">
+          <ul class="first-of-type" id="nav_menu">
+            <li><h2><%=@current_blog.name if  @current_blog%></h2></li>
+            <li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#switch_to">switch to a different blog</a>
+              <div id="switch_to" class="yuimenu">
+                <div class="bd">
+                  <ul>
+                    <% @current_user.blogs.each do |blog| -%>
+                    <li><%= link_to blog.name, :action=>:switch, :id=>blog.id%></li>
+                    <% end -%>
+                  </ul>
+                </div>
+              </div>      
+            </li>
+            <li><%= link_to 'console', :controller=>:base, :action=>:console %></li>
+            <li><%= link_to 'blogs', :controller=>:blog %></li>
+            <li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#nodes">nodes</a>
+              <div id="nodes" class="yuimenu">
+                <div class="bd">
+                  <ul>
+                    <li><%= link_to 'posts', :controller=>:node %></li>
+                    <li><%= link_to 'comments', :controller=>:comment %></li>
+                    <li><%= link_to 'spam', :controller=>:spam %></li>
+                  </ul>
+                </div>
+              </div>      
+            </li>
+            <li><%= link_to 'authors', :controller=>:author %></li>
+            <li><%= link_to 'ips', :controller=>:ip %></li>
+            <li><%= link_to 'editors', :controller=>:editor %></li>
+
+            <li><%= link_to 'logout', logout_url %></li>
+          </ul>            
+        </div>
+      </div>
+      <% end -%>
+      <div id="content"><%= yield%></div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<h2><%=@ip.ip %></h2>
+<p>Spam Attempts: <%=@ip.spams%></p>
+<ul class="commands">
+  <li><%= button_to("Block", :action=>:block_ip, :id=>@ip.id) if !@ip.blacklisted? %></li>
+  <li><%= button_to("Unblock", :action=>:unblock_ip, :id=>@ip.id) if @ip.blacklisted? %></li>
+</ul>
+<br clear="all" />
+<h3>Nodes</h3>
+<table class="admin" border="0" cellspacing="3">
+    <tr class="head">
+       <th width="45%">Title</th>
+       <th width="15%">Date Created</th>
+       <th width="15%">Date Published</th>
+       <th width="15%">IP</th>
+     </tr>
+    <% alt="alt" %>
+<% @ip.nodes.find(:all, :limit=>10, :order=>"published_at desc").each do |node| -%>
+    <tr class="<%=alt=(alt==""?"alt":"")%>">
+       <td class="title"><%=link_to(node.title, edit_node_url(:id=>node.id))%></td>
+       <td class="date"><%="#{time_ago_in_words(node.created_at)} ago"%></td>
+       <td class="date"><%="#{time_ago_in_words(node.published_at)} ago" if node.published_at%></td>
+       <td class="ip"><%=link_to node.author.name, admin_view_author_url(:id=>node.author.id)%></td>
+     </tr>
+<% end -%>
+</table>
+
+<h3>Authors</h3>
+<table class="admin">
+    <tr>
+      <th>Author</th>
+      <th>Posted At</th>
+    </tr>
+    <% @ip.authors.each do |author| %>
+      <tr class="<%=cycle("","alt")%>">
+          <td><%= link_to author.name, admin_view_author_url(:id=>author.id)%></td>
+          <td><%= "#{time_ago_in_words(author.nodes.last.published_at)} ago"%></td>
+        </tr>
+      <% end %>
+    </table>
+
+<%= button_to "Delete IP", :action=>"delete", :id=>@ip.id %>

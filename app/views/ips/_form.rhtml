@@ -1,0 +1,16 @@
+<%= error_messages_for 'ip' %>
+
+<!--[form:ip]-->
+<p><label for="ip_ip">Ip</label><br/>
+<%= text_field 'ip', 'ip'  %></p>
+
+<p><label for="ip_status">Status</label><br/>
+<select id="ip_status" name="ip[status]"><option value="false">False</option><option value="true">True</option></select></p>
+
+<p><label for="ip_created_at">Created at</label><br/>
+<%= datetime_select 'ip', 'created_at'  %></p>
+
+<p><label for="ip_updated_at">Updated at</label><br/>
+<%= datetime_select 'ip', 'updated_at'  %></p>
+<!--[eoform:ip]-->
+

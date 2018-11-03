@@ -1,0 +1,16 @@
+<li class="node">
+   <h3><%= link_to "#", "/#{node.permalink}"%>&nbsp;<%=link_to node.title, "/#{node.permalink}"%></h3>
+   <p><%=textilize(sanitize(node.body)) if node.body%></p>
+   <%= link_to("edit", edit_node_url(:id=>node.id)) if session[:user]%>
+   <ul class="meta">
+      <li class="author"><%=link_to_author_archives(node) if node.author%></li>
+      <li class="posted_at"><%= link_to_date_archives node%></li>
+      <li class="followups"><%= link_to_followup(node)%>&nbsp;(<%=link_to node.descendant_count.to_s + " followups", "/#{node.permalink}"%>)</li>
+      <li class="tags">
+         <%= tag_list node %>
+      </li>
+   </ul>
+   <a name="followups" />
+   <ul class="nodes">
+   </ul>
+</li>

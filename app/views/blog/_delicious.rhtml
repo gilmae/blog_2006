@@ -1,0 +1,37 @@
+<%
+   require 'net/http'
+   require 'net/https' if ENV['RAILS_ENV'] == 'production'
+   require 'rexml/document'
+
+   posts = []
+   if ENV['RAILS_ENV'] != 'development'
+     http = Net::HTTP.new('api.del.icio.us', 443)
+     http.use_ssl = true
+
+     http.start do |http| 
+       if http     
+         request = Net::HTTP::Get.new('/v1/posts/recent')
+         request.basic_auth DELICIOUS_UID, DELICIOUS_PWD
+         response = http.request(request)
+       
+         posts = []
+         if Net::HTTPSuccess      
+           xml = response.body
+           posts = REXML::Document.new(xml).root.get_elements('post')
+         end
+       end
+     end
+   end
+%>
+<ul>
+<% posts.each do |post| -%>
+   <li>
+      <p>
+         <%=link_to(post.attributes['description'], post.attributes['href']) %>
+         <br />
+         <%= post.attributes['extended'] if post.attributes['extended']%>
+      </p>
+   </li>
+<% end -%>
+</ul>
+   

@@ -1,0 +1,11 @@
+<ul>
+<% @posts.each do |post| -%>
+   <li>
+      <p>
+         <%=link_to(post.attributes['description'], post.attributes['href']) %>
+         <br />
+         <%= post.attributes['extended'] if post.attributes['extended']%>
+      </p>
+   </li>
+<% end -%>
+</ul>

@@ -1,0 +1,98 @@
+html, body { 
+    background:#fff;
+    height:100%;
+    padding:0;
+    margin:0;
+}
+
+html {
+    font-size: 0.7em;
+    line-height: 1.3em;
+    font: 76%/1.5em "Lucida Grande", "Lucida Sans Unicode","Trebuchet MS",Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+body {
+    font-size:1.2em;
+}
+
+p {
+    line-height: 1.5em;
+}
+h1 { 
+    height:60px;
+    padding-left:.5em;
+    margin:0;
+    vertical-align:top;
+}
+
+
+h2, form#blog_switcher {
+
+    margin:.25em 1em;
+}
+form#blog_switcher, form#blog_switcher select, form#blog_switcher input {
+    float:none;
+    width:auto;
+}
+
+ul#nav_menu{
+    width:100%;
+    position:relative;
+    float:left;
+    z-index:98;
+    background: #9ec656;
+    color:#fff;
+    font-weight:bold;
+}
+
+ul#nav_menu li {
+   margin:0 1em;
+   text-align:center;
+   background: #9ec656;
+   color:#fff;
+}
+
+
+ul#nav_menu li a {
+   margin:.5em 0;
+   color:#fff;
+   text-decoration:none;
+}
+
+ul#nav_menu li div, ul#nav_menu li ul, ul#nav_menu li ul li, ul#nav_menu li ul a {
+   margin:0;
+
+}
+
+ul#nav_menu li ul {
+  margin:0 .5em;
+
+}
+ul#nav_menu li ul a {
+  padding:0 .5em;
+}
+
+div#content {
+    padding-top:3em;
+    height:100%;
+    position:relative;
+    margin-left:2em;
+}
+
+table.admin {
+    width:75%;   
+}
+
+table.admin th {
+    background:#9ec656;
+    text-align:left;
+}
+
+
+table tr.alt {
+    background:#d0e2b0;
+}
+
+img.sparklines.recent_activity {
+
+}

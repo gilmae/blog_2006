@@ -1,0 +1,6 @@
+<%= form_tag({:action => 'new'}, {:multipart => true}) %>
+  <fieldset>
+    <label for="fileTheme">Theme</label><%= file_field_tag :theme %>
+  </fieldset>
+  <%= submit_tag("import")%>
+</form>

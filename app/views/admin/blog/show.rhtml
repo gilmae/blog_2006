@@ -1,0 +1,49 @@
+<h2><%=@blog.name%></h2>
+<%= link_to "(edit)", {:controller=>'blog', :action=>'edit', :id=>@blog.id} %>
+<h3>Editors</h3>
+<table class="admin">
+  <tr>
+    <th>Editor</th>
+    <th>Email</th>
+  </tr>
+  <%@blog.editors.each do |editor| -%>
+  <tr class="<%=cycle("","alt")%>">
+    <td><%= link_to editor.name, {:controller=>"editor", :action=>"show", :id=>editor.id}%></td>
+    <td><%= link_to editor.email, editor.email %></td>
+  </tr>
+  <% end -%>
+  <tfoot>
+    <td colspan="2"></td>
+  </tfoot>
+</table>  
+<h3>Latest Posts</h3
+<table class="admin">
+  <tr>
+    <th>Post</th>
+    <th>Published</th>
+    <th>Author</th>
+  </tr>
+  <% @latest_posts.each do |post| %>
+    <tr class="<%=cycle("","alt")%>">
+        <td><%= link_to post.title, post.uri%></td>
+      <td><%= "#{time_ago_in_words(post.published_at)} ago" if post.published?%></td>
+      <td><%= link_to post.author.name, admin_view_author_url(:id=>post.author.id)%></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <h3>Latest Commenters</h3
+  <table class="admin">
+    <tr>
+      <th>Author</th>
+      <th>Posted At</th>
+    </tr>
+    <% @latest_commenters.each do |author| %>
+      <tr class="<%=cycle("","alt")%>">
+          <td><%= link_to author.name, admin_view_author_url(:id=>author.id)%></td>
+          <td><%= "#{time_ago_in_words(author.nodes.last.published_at)} ago"%></td>
+        </tr>
+      <% end %>
+    </table>
+<%= button_to "delete", :action=>:delete, :id=>@blog.id %>
+    

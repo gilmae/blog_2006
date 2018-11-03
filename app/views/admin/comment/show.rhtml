@@ -1,0 +1,14 @@
+<h2><%=link_to @node.title, @node.uri%></h2>
+<%= link_to "(edit)", {:controller=>'comment', :action=>'edit', :id=>@node.id} %>
+<p>by: <%=link_to(@node.author.name, admin_view_author_url(:id=>@node.author_id)) if @node.author%></p>
+<p>from: <%=link_to(@node.ip.ip, :controller=>:ip, :action=>:show, :id=>@node.ip.id) if @node.ip%>
+<p>commenting on: <%=link_to(@node.parent.title, @node.parent.uri)%></p>
+<p>Original</p>
+<textarea readonly="true" rows="20" cols="70"><%=@node.body%></textarea>
+<p><%=@node.content_status%></p>
+<ul class="commands">
+  <li><%= button_to "Delete", :action=>:delete, :id=>@node.id %></li>
+  <li><%= button_to("Mark as Spam", :action=>:mark_as_spam, :id=>@node.id) if @node.content_status!=:spam %></li>
+  <li><%= button_to("Check Akismet", :action=>:check_akismet, :id=>@node.id) if [:none, :unknown].include?(@node.content_status) %></li>
+  <li><%= button_to("Mark as Ham", :action=>:mark_as_ham, :id=>@node.id) if @node.content_status==:spam %></li>
+</ul>

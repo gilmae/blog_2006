@@ -1,0 +1,26 @@
+<form method="post">
+  <%= hidden_field(:blog, :id) if @blog.id %>
+  <fieldset>
+    <legend>Basics</legend>
+    <label>Name</label><%=text_field :blog, :name%>   
+    <label>Subtitle</label><%=text_field :blog, :sub_title%>
+    <label>Domain</label><%=text_field :blog, :domain%>   
+    <%= "<span class=\"error\">#{@blog.errors["domain"]}</span>" if @blog.errors["domain"]%>
+    <label>Theme</label><%=select :blog, :theme, Theme.find_all.collect {|p| [ p.name, p.name ] } %>
+    <label>Editors</label>
+    <select name="blog[editor_ids][]" size="5" multiple="multiple">
+      <%=options_from_collection_for_select Editor.find(:all), "id", "name", @blog.editors.collect {|e| e.id.to_i}%>
+      </select>
+  </fieldset>
+  <fieldset>
+    <legend>Configuration</legend>
+<%  @blog.config.keys.each do |key|%>
+    <h3><%=key%></h3>
+    <% @blog.config[key].keys.each do |subkey|%>
+      <label><%=subkey%></label>
+      <input name="config[:<%=key%>][:<%=subkey%>]" value="<%=@blog.config[key][subkey]%>" />
+    <% end %>
+<% end %>    
+  </fieldset>
+  <input type="submit" value="Save" />
+</form>
