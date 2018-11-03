@@ -1,0 +1,7 @@
+# An old custom blogging engine
+
+Not quite as old as [blog_1999](https://github.com/gilmae/blog_1999). 
+
+Designed to replace the php site while retaining the database. I used this from 2006 - 2011? Not sure exactly when I stopped blogging but sometime around then.
+
+No edits have been made to this but it also has not been run. I can't be bothered working out what version of Ruby it required and standing that up. This has been uploaded more to satisfy the curiosity of future me. 
